@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/CLHome"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/img_1"
+    tools:context=".HomeFragment">
+
+    <!--    <FrameLayout-->
+    <!--        android:id="@+id/container"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintEnd_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent">-->
+    <!--    </FrameLayout>-->
+
+    <!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
+    <!--        android:id="@+id/bottom_navigation"-->
+    <!--        android:layout_width="411dp"-->
+    <!--        android:layout_height="109dp"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:menu="@menu/menu_bottom" />-->
+
+
+    <Button
+        android:id="@+id/BtnSelfRev"
+        android:layout_width="168dp"
+        android:layout_height="106dp"
+        android:layout_marginStart="24dp"
+        android:backgroundTint="@color/darkpurple"
+        android:text="Self-Revision"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.393" />
+
+    <Button
+        android:id="@+id/BtnStudyPlanner"
+        android:layout_width="168dp"
+        android:layout_height="104dp"
+        android:layout_marginEnd="24dp"
+        android:backgroundTint="@color/darkpurple"
+        android:text="Study-Planner"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.393" />
+
+    <Button
+        android:id="@+id/BtnFeedback"
+        android:layout_width="168dp"
+        android:layout_height="104dp"
+        android:layout_marginTop="140dp"
+        android:layout_marginEnd="24dp"
+        android:backgroundTint="@color/darkpurple"
+        android:text="Feedback"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/BtnAssessments" />
+
+    <Button
+        android:id="@+id/BtnReference"
+        android:layout_width="168dp"
+        android:layout_height="104dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="@color/darkpurple"
+        android:text="References"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/BtnAssessments" />
+
+    <Button
+        android:id="@+id/BtnAssessments"
+        android:layout_width="361dp"
+        android:layout_height="110dp"
+        android:layout_marginTop="368dp"
+        android:layout_marginEnd="24dp"
+        android:backgroundTint="@color/darkpurple"
+        android:text="Assessments"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_app"
+    app:startDestination="@id/DestHome">
+    <fragment
+        android:id="@+id/DestHome"
+        android:name="com.example.slearn.HomeFragment"
+        android:label="activity_home"
+        tools:layout="@layout/activity_home" >
+        <action
+            android:id="@+id/action_DestHomeFragment_to_DestSelfRevision"
+            app:destination="@id/DestSelfRevision" />
+        <action
+            android:id="@+id/action_DestHome_to_DestStudyPlanner"
+            app:destination="@id/DestStudyPlanner" />
+    </fragment>
+    <fragment
+        android:id="@+id/DestSelfRevision"
+        android:name="com.example.slearn.SelfRevision"
+        android:label="fragment_self_revision"
+        tools:layout="@layout/fragment_self_revision" />
+    <fragment
+        android:id="@+id/DestDiscussion"
+        android:name="com.example.slearn.DiscussionFragment"
+        android:label="fragment_discussion"
+        tools:layout="@layout/fragment_discussion" />
+    <fragment
+        android:id="@+id/DestAchievement"
+        android:name="com.example.slearn.AchievementFragment"
+        android:label="fragment_achievement"
+        tools:layout="@layout/fragment_achievement" />
+    <fragment
+        android:id="@+id/DestProfile"
+        android:name="com.example.slearn.ProfileFragment"
+        android:label="activity_profile"
+        tools:layout="@layout/activity_profile" >
+        <action
+            android:id="@+id/action_DestProfile_to_DestEditProfile"
+            app:destination="@id/DestEditProfile" />
+    </fragment>
+    <activity
+        android:id="@+id/DestEditProfile"
+        android:name="com.example.slearn.EditProfileActivity"
+        android:label="activity_edit_profile"
+        tools:layout="@layout/activity_edit_profile" />
+    <fragment
+        android:id="@+id/DestStudyPlanner"
+        android:name="com.example.slearn.StudyPlanner"
+        android:label="fragment_study_planner"
+        tools:layout="@layout/fragment_study_planner" >
+        <action
+            android:id="@+id/action_DestStudyPlanner_to_studyPlanner22"
+            app:destination="@id/DestStudyPlanner2" />
+        <action
+            android:id="@+id/action_DestStudyPlanner_to_studyPlanner222"
+            app:destination="@id/DestStudyPlanner2" />
+    </fragment>
+    <fragment
+        android:id="@+id/DestStudyPlanner2"
+        android:name="com.example.slearn.StudyPlanner2"
+        android:label="fragment_study_planner2"
+        tools:layout="@layout/fragment_study_planner2" />
+</navigation>

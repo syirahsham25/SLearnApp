@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Background shape -->
+    <item>
+        <shape>
+            <solid android:color="@android:color/black" />
+            <corners android:radius="4dp" />
+        </shape>
+    </item>
+    <!-- Tick icon overlay -->
+<!--    <item>-->
+<!--        <bitmap-->
+<!--            android:s="@android:drawable/base" &lt;!&ndash; You can replace this with any black tick icon &ndash;&gt;-->
+<!--        android:gravity="center" />-->
+<!--    </item>-->
+</layer-list>
