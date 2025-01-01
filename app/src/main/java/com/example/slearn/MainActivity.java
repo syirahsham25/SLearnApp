@@ -57,52 +57,6 @@ public class MainActivity extends AppCompatActivity {
         toggle.syncState();
 
 
-//////////////////// MENU BOTTOM FUNCTION ///////////////////
-//        bottomNavigationView = findViewById(R.id.bottom_navigation);
-//
-//        // Set the initial fragment to HomeFragment
-//        getSupportFragmentManager()
-//                .beginTransaction()
-//                .replace(R.id.container, homeFragment)
-//                .commit();
-//
-//        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-//            @Override
-//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//                switch (item.getItemId()) {
-//                    case R.id.ItemHome:
-//                        getSupportFragmentManager()
-//                                .beginTransaction()
-//                                .replace(R.id.container, homeFragment)
-//                                .commit();
-//                        return true;
-//
-//                    case R.id.ItemDiscussion:
-//                        getSupportFragmentManager()
-//                                .beginTransaction()
-//                                .replace(R.id.container, discussionFragment)
-//                                .commit();
-//                        return true;
-//
-//                    case R.id.ItemAchievement:
-//                        getSupportFragmentManager()
-//                                .beginTransaction()
-//                                .replace(R.id.container, achievementFragment)
-//                                .commit();
-//                        return true;
-//
-//                    case R.id.ItemProfile:
-//                        getSupportFragmentManager()
-//                                .beginTransaction()
-//                                .replace(R.id.container, profileFragment)
-//                                .commit();
-//                        return true;
-//
-//                    default:
-//                        return false;
-//                }
-//            }
-//        });
     }
 
 

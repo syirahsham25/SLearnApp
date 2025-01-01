@@ -13,7 +13,7 @@
         android:id="@+id/btnWelcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="392dp"
+        android:layout_marginTop="400dp"
         android:layout_marginEnd="16dp"
         android:backgroundTint="@color/darkpurple"
         android:drawableRight="@drawable/baseline_play_arrow_24"

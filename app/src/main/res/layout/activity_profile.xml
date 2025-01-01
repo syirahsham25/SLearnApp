@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/img"
+    android:background="@drawable/img_9"
     tools:context=".ProfileFragment">
 
     <Button
@@ -38,7 +38,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/titleName"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:text="Sarah"
         android:textColor="@color/white"
         android:textSize="20sp"
@@ -53,11 +53,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="24dp"
         android:background="@color/cream"
         android:orientation="vertical"
-        android:padding="10dp"
+        android:padding="5dp"
         app:cardCornerRadius="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -159,6 +159,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Sarah"
+                android:hint="User's Name"
+                android:textColorHint="@color/darker_gray"
                 android:textAlignment="viewEnd"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
@@ -194,6 +196,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="sarah@gmail.com"
+                android:hint="user@gmail.com"
+                android:textColorHint="@color/darker_gray"
                 android:textAlignment="viewEnd"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
@@ -229,6 +233,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Sarah2025"
+                android:hint="user's username"
+                android:textColorHint="@color/darker_gray"
                 android:textAlignment="viewEnd"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
@@ -264,6 +270,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="password"
+                android:hint="User's password"
+                android:textColorHint="@color/darker_gray"
                 android:textAlignment="viewEnd"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
@@ -276,7 +284,7 @@
         android:id="@+id/btnEditProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="212dp"
+        android:layout_marginTop="180dp"
         android:layout_marginEnd="24dp"
         android:gravity="center"
         android:text="Edit Profile"

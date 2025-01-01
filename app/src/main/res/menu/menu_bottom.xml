@@ -14,7 +14,7 @@
     <item
         android:id="@+id/DestAchievement"
         android:title="Achievements"
-        android:icon="@drawable/baseline_achievement_24" />
+        android:icon="@drawable/ic_trophy_24dp" />
 
     <item
         android:id="@+id/DestProfile"

@@ -24,13 +24,13 @@
     <fragment
         android:id="@+id/DestDiscussion"
         android:name="com.example.slearn.DiscussionFragment"
-        android:label="fragment_discussion"
-        tools:layout="@layout/fragment_discussion" />
+        android:label="fragment_discussions"
+        tools:layout="@layout/fragment_discussions" />
     <fragment
         android:id="@+id/DestAchievement"
         android:name="com.example.slearn.AchievementFragment"
-        android:label="fragment_achievement"
-        tools:layout="@layout/fragment_achievement" />
+        android:label="fragment_achievements"
+        tools:layout="@layout/fragment_achievements" />
     <fragment
         android:id="@+id/DestProfile"
         android:name="com.example.slearn.ProfileFragment"
