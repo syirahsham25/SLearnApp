@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginBottom="16dp"
+    android:background="@drawable/rounded_box_background"
+    android:backgroundTint="#6BA4C0"
+    android:padding="16dp">
+
+    <!-- Question Number -->
+    <TextView
+        android:id="@+id/questionNumberText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Question 1"
+        android:textColor="@android:color/white"
+        android:textSize="14sp" />
+
+    <!-- Question Text -->
+    <TextView
+        android:id="@+id/questionText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Options Container -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="8dp">
+
+        <!-- Option A -->
+        <TextView
+            android:id="@+id/optionAText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="#5D96B3"
+            android:textColor="@android:color/white"
+            android:textSize="14sp" />
+
+        <!-- Option B -->
+        <TextView
+            android:id="@+id/optionBText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="#5D96B3"
+            android:textColor="@android:color/white"
+            android:textSize="14sp" />
+
+        <!-- Option C -->
+        <TextView
+            android:id="@+id/optionCText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="#5D96B3"
+            android:textColor="@android:color/white"
+            android:textSize="14sp" />
+
+        <!-- Option D -->
+        <TextView
+            android:id="@+id/optionDText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:background="#5D96B3"
+            android:textColor="@android:color/white"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <!-- Correct Answer -->
+    <TextView
+        android:id="@+id/correctAnswerText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textStyle="bold"
+        android:textColor="#E8F4F8"
+        android:textSize="14sp" />
+
+</LinearLayout>

@@ -1,0 +1,21 @@
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/baseline_home"
+        android:title="Home"
+        tools:icon="@drawable/baseline_home" />
+
+    <item
+        android:id="@+id/nav_discussion"
+        android:icon="@drawable/baseline_message"
+        android:title="Discussion"
+        tools:icon="@drawable/baseline_message" />
+
+    <item
+        android:id="@+id/nav_profile"
+        android:icon="@drawable/baseline_person"
+        android:title="Profile"
+        tools:icon="@drawable/baseline_person" />
+</menu>
