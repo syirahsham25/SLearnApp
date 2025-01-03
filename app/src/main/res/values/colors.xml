@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="navy_blue">#1B3771</color>
+    <color name="Grey" > #bdbbb</color>
+    <color name="correct_answer_background">#4CAF50</color>
+    <color name="course_button_color">#78B6D9</color>
+    <color name="topic_button_color">#6BA4C0</color>
+    <color name="black">#FF000000</color>
+
     <color name="cream">#F5F2EA</color>
     <color name="darkpurple">#53467A</color>
     <color name="lightpurple">#897FAA</color>
     <color name="darker_gray">#A9A9A9</color>
-
 </resources>
