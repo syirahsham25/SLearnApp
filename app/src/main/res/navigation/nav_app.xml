@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_app"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.slearnapp.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home"/>
+    <fragment
+        android:id="@+id/DestStudyPlanner2"
+        android:name="com.example.slearnapp.StudyPlanner2"
+        android:label="fragment_study_planner2"
+        tools:layout="@layout/fragment_study_planner2" />
+    <activity
+        android:id="@+id/selfRevision"
+        android:name="com.example.slearnapp.SelfRevision"
+        android:label="activity_self_revision"
+        tools:layout="@layout/activity_self_revision" />
+    <activity
+        android:id="@+id/selfRevisionCourse"
+        android:name="com.example.slearnapp.SelfRevisionCourse"
+        android:label="activity_self_revision_course"
+        tools:layout="@layout/activity_self_revision_course" />
+    <activity
+        android:id="@+id/selfRevisionTopic"
+        android:name="com.example.slearnapp.SelfRevisionTopic"
+        android:label="SelfRevisionTopic" />
+</navigation>

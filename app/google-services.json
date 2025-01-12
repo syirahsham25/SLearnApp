@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "613114439642",
+    "project_id": "slearnapp-b2889",
+    "storage_bucket": "slearnapp-b2889.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:613114439642:android:35017551e612ba49e002e3",
+        "android_client_info": {
+          "package_name": "com.example.slearnapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfjxpHaNH_j8QKENeWVa5QuQZKbE6WRKA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
