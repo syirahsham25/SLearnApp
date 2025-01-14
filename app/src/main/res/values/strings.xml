@@ -3,15 +3,21 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-<!--    <string name="academic">Academic</string>-->
-<!--    <string name="achievements">Achievements</string>-->
-<!--    <string name="add_post">Add post</string>-->
-<!--    <string name="co_curricular">Co-curricular</string>-->
-<!--    <string name="comment_button_tapped">Comment button tapped</string>-->
-<!--    <string name="discussions">Discussions</string>-->
-<!--    <string name="home">Home</string>-->
-<!--    <string name="no_achievements_are_found">No achievements are found</string>-->
-<!--    <string name="no_discussions_are_found">No discussions are found</string>-->
-<!--    <string name="profile">Profile</string>-->
+    <string name="_two_items">%1$s · %2$s</string>
+    <string name="academic">Academic</string>
+    <string name="achievements">Achievements</string>
+    <string name="add_post">Add post</string>
+    <string name="co_curricular">Co-curricular</string>
+    <string name="comment_button_tapped">Comment button tapped</string>
+    <string name="discussions">Discussions</string>
+    <string name="home">Home</string>
+    <string name="no_achievements_are_found">No achievements are found</string>
+    <string name="no_discussions_are_found">No discussions are found</string>
+    <string name="profile">Profile</string>
+
+    <string name="feedback_title">Feedback</string>
+    <string name="positive_feedback">Positive Feedback</string>
+    <string name="negative_feedback">Negative Feedback</string>
+    <string name="no_feedback_found">No Feedback Found</string>
 
 </resources>

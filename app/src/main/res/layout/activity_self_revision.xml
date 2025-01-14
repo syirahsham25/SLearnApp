@@ -18,6 +18,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- Title -->
+
     <!-- Back Button -->
     <ImageButton
         android:id="@+id/backButton"
@@ -31,26 +33,42 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- ScrollView for Courses -->
+
+    <!-- Add Course Button -->
     <ScrollView
-        android:id="@+id/courses_container"
-        android:layout_width="407dp"
-        android:layout_height="393dp"
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toTopOf="@+id/add_course"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView">
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="-1dp">
 
         <LinearLayout
-            android:id="@+id/coursesContainer"
+            android:id="@+id/courses_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_marginTop="30dp"
             android:paddingHorizontal="32dp"
             android:paddingVertical="16dp">
+
             <!-- Course buttons will be added here programmatically -->
+            <Button
+                android:id="@+id/btnCourse"
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:backgroundTint="@color/darkpurple"
+                android:padding="16dp"
+                android:text="My Course"
+                android:textSize="18sp"
+                app:cornerRadius="24dp" />
+
         </LinearLayout>
     </ScrollView>
 
@@ -67,5 +85,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+
+    <!-- Bottom Navigation -->
+    <!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
+    <!--        android:id="@+id/bottom_nav_view"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="70dp"-->
+    <!--        android:background="#F3F0E9"-->
+    <!--        app:elevation="0dp"-->
+    <!--        app:itemIconSize="30dp"-->
+    <!--        app:itemTextColor="@color/navy_blue"-->
+    <!--        app:labelVisibilityMode="labeled"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:menu="@menu/menu_bottom" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

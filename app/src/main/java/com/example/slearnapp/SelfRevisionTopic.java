@@ -1,5 +1,6 @@
 package com.example.slearnapp;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -94,6 +95,7 @@ public class SelfRevisionTopic extends AppCompatActivity {
         imm.showSoftInput(titleInput, InputMethodManager.SHOW_IMPLICIT);
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private void addNewTitleSection(String titleText) {
         String noteId = courseName + "_" + topicName + "_" + System.currentTimeMillis();
 
@@ -105,8 +107,8 @@ public class SelfRevisionTopic extends AppCompatActivity {
         ));
         titleView.setPadding(dpToPx(10), dpToPx(10), dpToPx(10), dpToPx(10));
         titleView.setTextSize(20);
-        titleView.setTextColor(getResources().getColor(R.color.your_blue_color));
-        titleView.setBackgroundColor(getResources().getColor(R.color.your_light_blue_color));
+        titleView.setTextColor(getResources().getColor(R.color.blue));
+        titleView.setBackgroundColor(getResources().getColor(R.color.light_blue));
         titleView.setText(titleText);
         titleView.setTag(noteId);
 
@@ -122,7 +124,7 @@ public class SelfRevisionTopic extends AppCompatActivity {
         noteContent.setPadding(dpToPx(12), dpToPx(12), dpToPx(12), dpToPx(12));
         noteContent.setBackgroundColor(getResources().getColor(android.R.color.white));
         noteContent.setTextSize(16);
-        noteContent.setTextColor(getResources().getColor(R.color.your_gray_color));
+        noteContent.setTextColor(getResources().getColor(R.color.gray));
         noteContent.setHint("enter your text here ...");
         noteContent.setGravity(android.view.Gravity.TOP);
         noteContent.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_MULTI_LINE);

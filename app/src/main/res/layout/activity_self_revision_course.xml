@@ -8,6 +8,7 @@
     android:background="@drawable/img_8"
     tools:context=".SelfRevisionCourse">
 
+
     <!-- Header Image -->
     <ImageView
         android:id="@+id/imageView"
@@ -19,31 +20,45 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- Title -->
+
+    <!-- Back Button -->
     <TextView
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="125dp"
         android:text="Course 1"
         android:textColor="#1B3771"
         android:textSize="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.65"  />
+        app:layout_constraintHorizontal_bias="0.811"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/imageView" />
 
     <ImageButton
         android:id="@+id/backButton"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="44dp"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:contentDescription="Back"
         android:src="@drawable/baseline_arrow_left_24"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
+    <!-- Toggle Buttons for Notes/Quiz -->
+
+
+    <!-- ScrollView for Topics -->
+
+    <!-- Bottom Navigation -->
+
+
+    <!-- Add Topic Button -->
 
     <ScrollView
         android:id="@+id/scrollView2"
@@ -53,17 +68,42 @@
         android:layout_marginBottom="156dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent">
 
         <GridLayout
             android:id="@+id/topics_grid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:columnCount="2"
-            android:padding="16dp" />
+            android:columnCount="1"
+            android:padding="16dp">
+
+            <!-- Topic Button Template -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_margin="8dp"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/btnTopic"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:backgroundTint="#6BA4C0"
+                    android:text="Topic 1"
+                    app:cornerRadius="16dp"
+                    app:iconGravity="textStart"
+                    app:iconPadding="40dp"
+                    app:iconSize="60dp" />
+
+            </LinearLayout>
+
+            <!-- Add more topic buttons programmatically following this template -->
+
+        </GridLayout>
     </ScrollView>
 
     <Button

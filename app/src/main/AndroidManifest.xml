@@ -14,42 +14,71 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Slearnapp"
         tools:targetApi="31">
+
+        <activity
+            android:name=".SignUpActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false" />
         <activity
             android:name=".WelcomeActivity"
-            android:exported="false" />
+            android:exported="false" /> <!-- Main Activities -->
         <activity
-            android:name=".SelfRevisionTopic"
-            android:exported="false" />
-        <activity
-            android:name=".SelfRevisionCourse"
+            android:name=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".SelfRevision"
             android:exported="false" />
         <activity
-            android:name=".EditProfile"
+            android:name=".SelfRevisionCourse"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".SelfRevisionTopic"
+            android:exported="false" /> <!-- Quiz Module Activities -->
+        <activity
+            android:name=".TeacherReviewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TeacherAddQuizActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TeacherTestActivity"
             android:exported="false" />
         <activity
             android:name=".StudyPlanner"
             android:exported="false" />
         <activity
             android:name=".StudyPlanner2"
+            android:exported="false" /> <!-- Add Feedback Activity here -->
+        <activity
+            android:name=".FeedbackActivity"
             android:exported="false" />
         <activity
-            android:name=".SignUpActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:name=".FeedbackActivityAssignment"
+            android:exported="false" />
         <activity
-            android:name=".MainActivity"
-            android:exported="true">
-        </activity>
+            android:name=".FeedbackActivityTeacher"
+            android:exported="false" /> <!-- Add References Activity here -->
+        <activity
+            android:name=".FeedbackApps"
+            android:exported="false" />
+        <!-- Authentication Activities -->
+        <activity
+            android:name=".ReferencesActivity"
+            android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".Reference"-->
+<!--            android:exported="false" />-->
+<!--        <activity-->
+<!--            android:name=".ReferencesAdapter"-->
+<!--            android:exported="false" />-->
     </application>
 
 </manifest>

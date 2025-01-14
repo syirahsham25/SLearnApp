@@ -1,6 +1,7 @@
 package com.example.slearnapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -79,6 +80,18 @@ public class StudyPlanner2 extends AppCompatActivity {
             String date = tvEventDetails.getText().toString().split("\n")[0];
             openEventDialog(date);
         });
+
+
+        Button button1 = findViewById(R.id.btn_todo_list);
+
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(StudyPlanner2.this, StudyPlanner.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
     private void updateCalendar() {
@@ -128,26 +141,71 @@ public class StudyPlanner2 extends AppCompatActivity {
         AlertDialog dialog = builder.create();
         dialog.show();
 
-        btnSaveEvent.setOnClickListener(v -> {
+        // Handle Save button click
+        btnCancelEvent.setOnClickListener(view -> {
             String eventName = etEventInput.getText().toString().trim();
             if (!eventName.isEmpty()) {
+                // Save the event in the map
                 eventMap.put(date, eventName);
+
+                // Save to SharedPreferences
                 editor.putString(date, eventName);
                 editor.apply();
+
+                // Update tvEventDetails and notify the user
                 tvEventDetails.setText(date + "\n" + eventName);
-                Toast.makeText(this, "Event saved!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(StudyPlanner2.this, "Event saved!", Toast.LENGTH_SHORT).show();
             } else {
+                // Clear the event if the input is empty
                 eventMap.remove(date);
+
+                // Remove from SharedPreferences
                 editor.remove(date);
                 editor.apply();
+
+                // Update tvEventDetails and notify the user
                 tvEventDetails.setText("");
-                Toast.makeText(this, "Event cleared!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(StudyPlanner2.this, "Event cleared!", Toast.LENGTH_SHORT).show();
             }
+
+            // Dismiss the dialog
             dialog.dismiss();
+
+            // Update the calendar view (if applicable)
             updateCalendar();
         });
 
-        btnCancelEvent.setOnClickListener(v -> dialog.dismiss());
+        // Handle Delete button click
+        btnSaveEvent.setOnClickListener(view -> {
+            if (eventMap.containsKey(date)) {
+                // Remove the event from the map
+                eventMap.remove(date);
+
+                // Remove from SharedPreferences
+                editor.remove(date);
+                editor.apply();
+
+                // Update tvEventDetails and notify the user
+                tvEventDetails.setText("");
+                Toast.makeText(StudyPlanner2.this, "Event deleted!", Toast.LENGTH_SHORT).show();
+
+                // Dismiss the dialog
+                dialog.dismiss();
+
+                // Update the calendar view (if applicable)
+                updateCalendar();
+            } else {
+                Toast.makeText(StudyPlanner2.this, "No event to delete!", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+
+    private void saveEvents() {
+        for (String key : eventMap.keySet()) {
+            editor.putString(key, eventMap.get(key));
+        }
+        editor.apply();
     }
 
     private void loadEvents() {

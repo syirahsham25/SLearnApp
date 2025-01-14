@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
+import android.util.Log;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,7 +23,7 @@ import com.google.firebase.auth.FirebaseAuth;
  */
 public class HomeFragment extends Fragment {
 
-    Button button1,button2;
+    Button button1, button2, button3, button4, button5;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -71,7 +72,10 @@ public class HomeFragment extends Fragment {
 
         button1 = view.findViewById(R.id.BtnSelfRev);
         button2 = view.findViewById(R.id.BtnStudyPlanner);
-//        button2 = view.findViewById(R.id.BtnAssessments);
+        button3 = view.findViewById(R.id.BtnAssessments);
+        button4 = view.findViewById(R.id.BtnFeedback);
+        button5 = view.findViewById(R.id.BtnReference);
+
 
         // Set up the logout button
         button1.setOnClickListener(v -> {
@@ -87,14 +91,30 @@ public class HomeFragment extends Fragment {
 //            requireActivity().finish();
         });
 
-        // Set up the assessment button
-//        button1.setOnClickListener(v -> {
-////            FirebaseAuth.getInstance().signOut();
-//            Intent intent = new Intent(getContext(), StudentQuizActivity.class);
-//            startActivity(intent);
-////            requireActivity().finish();
-//        });
+//         Set up the assessment button
+        button3.setOnClickListener(v -> {
+//            FirebaseAuth.getInstance().signOut();
+            Intent intent = new Intent(getContext(), TeacherTestActivity.class);
+            startActivity(intent);
+//            requireActivity().finish();
+        });
 
+//         Set up the Feedback button
+        button4.setOnClickListener(v -> {
+//            FirebaseAuth.getInstance().signOut();
+            Intent intent = new Intent(getContext(), FeedbackActivity.class);
+            startActivity(intent);
+//            requireActivity().finish();
+        });
+
+//         Set up the Reference button
+        button5.setOnClickListener(v -> {
+//            FirebaseAuth.getInstance().signOut();
+            Log.d("HomeFragment", "Button 5 clicked, navigating to ReferencesActivity");
+            Intent intent = new Intent(getContext(), ReferencesActivity.class);
+            startActivity(intent);
+//            requireActivity().finish();
+        });
 
         return view;
     }

@@ -30,6 +30,15 @@
         android:weightSum="2">
 
         <Button
+            android:id="@+id/btnCancelTopic"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Cancel"
+            android:backgroundTint="@color/darkpurple"
+            android:textColor="@color/cream" />
+
+        <Button
             android:id="@+id/btnSaveTopic"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -38,13 +47,5 @@
             android:backgroundTint="@color/darker_gray"
             android:textColor="@color/cream" />
 
-        <Button
-            android:id="@+id/btnCancelTopic"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Cancel"
-            android:backgroundTint="@color/darkpurple"
-            android:textColor="@color/cream" />
     </LinearLayout>
 </LinearLayout>

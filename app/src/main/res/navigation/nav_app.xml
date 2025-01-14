@@ -15,18 +15,4 @@
         android:name="com.example.slearnapp.StudyPlanner2"
         android:label="fragment_study_planner2"
         tools:layout="@layout/fragment_study_planner2" />
-    <activity
-        android:id="@+id/selfRevision"
-        android:name="com.example.slearnapp.SelfRevision"
-        android:label="activity_self_revision"
-        tools:layout="@layout/activity_self_revision" />
-    <activity
-        android:id="@+id/selfRevisionCourse"
-        android:name="com.example.slearnapp.SelfRevisionCourse"
-        android:label="activity_self_revision_course"
-        tools:layout="@layout/activity_self_revision_course" />
-    <activity
-        android:id="@+id/selfRevisionTopic"
-        android:name="com.example.slearnapp.SelfRevisionTopic"
-        android:label="SelfRevisionTopic" />
 </navigation>

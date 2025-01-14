@@ -11,58 +11,66 @@
         android:id="@+id/BtnSelfRev"
         android:layout_width="168dp"
         android:layout_height="106dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="252dp"
         android:backgroundTint="@color/darkpurple"
         android:text="Self-Revision"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/BtnAssessments"
-        app:layout_constraintStart_toStartOf="@+id/BtnAssessments" />
+        android:textColor="@android:color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/BtnStudyPlanner"
         android:layout_width="168dp"
         android:layout_height="104dp"
+        android:layout_marginTop="252dp"
+        android:layout_marginEnd="20dp"
         android:backgroundTint="@color/darkpurple"
         android:text="Study-Planner"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/BtnSelfRev"
-        app:layout_constraintEnd_toEndOf="@+id/BtnAssessments"
-        app:layout_constraintTop_toTopOf="@+id/BtnSelfRev" />
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/BtnFeedback"
         android:layout_width="168dp"
         android:layout_height="104dp"
+        android:layout_marginTop="520dp"
         android:backgroundTint="@color/darkpurple"
         android:text="Feedback"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/BtnReference"
-        app:layout_constraintEnd_toEndOf="@+id/BtnAssessments"
-        app:layout_constraintTop_toTopOf="@+id/BtnReference" />
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.917"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/BtnReference"
         android:layout_width="168dp"
         android:layout_height="104dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="520dp"
         android:backgroundTint="@color/darkpurple"
         android:text="References"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/BtnAssessments"
-        app:layout_constraintTop_toBottomOf="@+id/BtnAssessments" />
+        android:textColor="@android:color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/BtnAssessments"
         android:layout_width="361dp"
         android:layout_height="110dp"
-        android:layout_marginTop="364dp"
+        android:layout_marginTop="25dp"
         android:backgroundTint="@color/darkpurple"
-        android:text="Assessments"
+        android:text="FlashCards"
         android:textStyle="bold"
+        android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        app:layout_constraintTop_toBottomOf="@+id/BtnSelfRev" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

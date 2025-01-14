@@ -22,9 +22,7 @@
         android:id="@+id/bnvActivityMain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="invisible"
-        app:menu="@menu/menu_activity_main"
-        tools:visibility="invisible" />
+        app:menu="@menu/menu_activity_main" />
 
 
 

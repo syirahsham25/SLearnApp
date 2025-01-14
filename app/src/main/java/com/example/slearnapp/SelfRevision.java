@@ -6,7 +6,6 @@ import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.InputType;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,7 +17,6 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.button.MaterialButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -34,31 +32,32 @@ public class SelfRevision extends AppCompatActivity {
     private static final String PREFS_KEY_COURSES = "courses";
     private static final long DOUBLE_CLICK_DELAY = 300; // Delay in milliseconds
 
-    // Added fields for swipe and undo functionality
-    private float x1, x2;
-    private static final int MIN_DISTANCE = 150;
-    private View lastDeletedView;
-    private String lastDeletedCourseName;
-    private int lastDeletedPosition;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_self_revision);
 
+        // Initialize views
         initializeViews();
+
+        // Set up click listeners
         setupClickListeners();
+
+        // Load any existing courses
         loadExistingCourses();
     }
 
     private void initializeViews() {
-        coursesContainer = findViewById(R.id.coursesContainer);
+        coursesContainer = findViewById(R.id.courses_container);
         addCourseButton = findViewById(R.id.add_course);
         backButton = findViewById(R.id.backButton);
     }
 
     private void setupClickListeners() {
+        // Add Course Button Click Listener
         addCourseButton.setOnClickListener(v -> showAddCourseDialog());
+
+        // Back Button Click Listener
         backButton.setOnClickListener(v -> onBackPressed());
     }
 
@@ -66,12 +65,14 @@ public class SelfRevision extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Add New Course");
 
+        // Set up the input
         final EditText input = new EditText(this);
         input.setInputType(InputType.TYPE_CLASS_TEXT);
         input.setHint("Enter course name");
         input.setPadding(32, 32, 32, 32);
         builder.setView(input);
 
+        // Set up the buttons
         builder.setPositiveButton("Add", (dialog, which) -> {
             String courseName = input.getText().toString().trim();
             if (!courseName.isEmpty()) {
@@ -86,17 +87,23 @@ public class SelfRevision extends AppCompatActivity {
     }
 
     private void addCourse(String courseName) {
-        MaterialButton courseButton = createCourseButton(courseName);
+        // Create new button for the course
+        Button courseButton = createCourseButton(courseName);
+
+        // Add to container
         coursesContainer.addView(courseButton);
+
+        // Save the course
         coursesList.add(courseName);
         saveCourses();
     }
 
-    private MaterialButton createCourseButton(String courseName) {
-        MaterialButton courseButton = new MaterialButton(this);
+    private Button createCourseButton(String courseName) {
+        Button courseButton = new Button(this);
         courseButton.setText(courseName);
         courseButton.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.course_button_color)));
 
+        // Set button styling
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
@@ -106,125 +113,60 @@ public class SelfRevision extends AppCompatActivity {
         courseButton.setPadding(48, 48, 48, 48);
         courseButton.setTextSize(18);
 
+        // Implement double-click functionality
         final Handler handler = new Handler();
         final int[] clickCount = {0};
-        final long[] lastClickTime = {0};
-        final float[] startX = {0};
-        final boolean[] isSwipe = {false};
 
-        courseButton.setOnTouchListener((v, event) -> {
-            switch (event.getAction()) {
-                case MotionEvent.ACTION_DOWN:
-                    startX[0] = event.getX();
-                    isSwipe[0] = false;
-                    long clickTime = System.currentTimeMillis();
+        courseButton.setOnClickListener(v -> {
+            clickCount[0]++;
 
-                    if (clickTime - lastClickTime[0] < DOUBLE_CLICK_DELAY) {
-                        // Double click detected
-                        clickCount[0] = 0;
-                        lastClickTime[0] = 0;
-                        showDeleteCourseDialog(courseName, courseButton);
-                        return true;
-                    }
-
-                    lastClickTime[0] = clickTime;
-                    return true;
-
-                case MotionEvent.ACTION_MOVE:
-                    float deltaX = startX[0] - event.getX();
-                    if (Math.abs(deltaX) > MIN_DISTANCE) {
-                        isSwipe[0] = true;
-                    }
-                    return true;
-
-                case MotionEvent.ACTION_UP:
-                    float endX = event.getX();
-                    float finalDeltaX = startX[0] - endX;
-
-                    if (isSwipe[0] && Math.abs(finalDeltaX) > MIN_DISTANCE && finalDeltaX > 0) {
-                        // Swipe left detected
-                        lastDeletedView = courseButton;
-                        lastDeletedCourseName = courseName;
-                        lastDeletedPosition = coursesContainer.indexOfChild(courseButton);
-
-                        courseButton.animate()
-                                .translationX(-courseButton.getWidth())
-                                .alpha(0f)
-                                .setDuration(300)
-                                .withEndAction(() -> {
-                                    coursesContainer.removeView(courseButton);
-                                    coursesList.remove(courseName);
-                                    saveCourses();
-                                    showUndoSnackbar();
-                                });
-                    } else if (!isSwipe[0]) {
-                        // Single click detected
-                        Intent intent = new Intent(SelfRevision.this, SelfRevisionCourse.class);
-                        intent.putExtra("course_name", courseName);
-                        startActivity(intent);
-                    }
-                    return true;
-            }
-            return false;
+            handler.postDelayed(() -> {
+                if (clickCount[0] == 1) {
+                    // Single click: Navigate to SelfRevisionCourse
+                    Intent intent = new Intent(SelfRevision.this, SelfRevisionCourse.class);
+                    intent.putExtra("course_name", courseName); // Pass the course name to the next activity
+                    startActivity(intent);
+                } else if (clickCount[0] == 2) {
+                    // Double click: Show delete course dialog
+                    showDeleteCourseDialog(courseName, courseButton);
+                }
+                clickCount[0] = 0;
+            }, DOUBLE_CLICK_DELAY);
         });
 
         return courseButton;
     }
 
-    private void showDeleteCourseDialog(String courseName, MaterialButton courseButton) {
+    private void showDeleteCourseDialog(String courseName, Button courseButton) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Delete Course")
                 .setMessage("Are you sure you want to delete \"" + courseName + "\"?")
                 .setPositiveButton("Delete", (dialog, which) -> {
-                    lastDeletedView = courseButton;
-                    lastDeletedCourseName = courseName;
-                    lastDeletedPosition = coursesContainer.indexOfChild(courseButton);
+                    // Remove course from the list and container
+                    coursesList.remove(courseName);
+                    coursesContainer.removeView(courseButton);
 
-                    courseButton.animate()
-                            .translationX(-courseButton.getWidth())
-                            .alpha(0f)
-                            .setDuration(300)
-                            .withEndAction(() -> {
-                                coursesList.remove(courseName);
-                                coursesContainer.removeView(courseButton);
-                                saveCourses();
-                                showUndoSnackbar();
-                            });
+                    // Save updated courses list
+                    saveCourses();
+
+                    Toast.makeText(this, "Course \"" + courseName + "\" deleted.", Toast.LENGTH_SHORT).show();
                 })
                 .setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss());
 
         builder.create().show();
     }
 
-    private void showUndoSnackbar() {
-        View snackbarView = findViewById(android.R.id.content);
-        if (snackbarView != null) {
-            Snackbar.make(snackbarView, "Course deleted", Snackbar.LENGTH_LONG)
-                    .setAction("UNDO", v -> {
-                        try {
-                            if (lastDeletedView != null && lastDeletedCourseName != null) {
-                                lastDeletedView.setTranslationX(0f);
-                                lastDeletedView.setAlpha(1f);
-                                coursesContainer.addView(lastDeletedView, lastDeletedPosition);
-                                coursesList.add(lastDeletedPosition, lastDeletedCourseName);
-                                saveCourses();
-                            }
-                        } catch (Exception e) {
-                            Toast.makeText(this, "Failed to restore course", Toast.LENGTH_SHORT).show();
-                        }
-                    })
-                    .show();
-        }
-    }
-
     private void loadExistingCourses() {
         SharedPreferences prefs = getPreferences(MODE_PRIVATE);
         Set<String> savedCourses = prefs.getStringSet(PREFS_KEY_COURSES, new HashSet<>());
         coursesList = new ArrayList<>(savedCourses);
+
+        // Sort courses alphabetically
         Collections.sort(coursesList);
 
+        // Add buttons for existing courses
         for (String courseName : coursesList) {
-            MaterialButton courseButton = createCourseButton(courseName);
+            Button courseButton = createCourseButton(courseName);
             coursesContainer.addView(courseButton);
         }
     }

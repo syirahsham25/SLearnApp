@@ -1,6 +1,7 @@
 package com.example.slearnapp;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,7 +16,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -25,14 +25,15 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class StudyPlanner extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private TaskAdapter taskAdapter;
     private List<Task> taskList;
-
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -42,7 +43,6 @@ public class StudyPlanner extends AppCompatActivity {
         // Initialize Views
         recyclerView = findViewById(R.id.task_list);
         Button btnAddTask = findViewById(R.id.btn_add_task);
-
         Button button1 = findViewById(R.id.btn_event);
 
         button1.setOnClickListener(new View.OnClickListener() {
@@ -62,6 +62,9 @@ public class StudyPlanner extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(taskAdapter);
 
+        // Load tasks from SharedPreferences
+        loadTasks();
+
         // Add Task Button Listener
         btnAddTask.setOnClickListener(v -> showTaskInputDialog(null, -1));
 
@@ -69,42 +72,37 @@ public class StudyPlanner extends AppCompatActivity {
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
             @Override
             public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
-                return false; // We are not implementing drag-and-drop
+                return false;
             }
 
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
                 int position = viewHolder.getAdapterPosition();
+                Task taskToDelete = taskList.get(position);
 
                 if (direction == ItemTouchHelper.LEFT) {
-                    // Get the task that is about to be deleted
-                    Task taskToDelete = taskList.get(position);
-
-                    // Remove the task from the list temporarily
                     taskList.remove(position);
                     taskAdapter.notifyItemRemoved(position);
 
-                    // Show Snackbar with "Delete" and "Cancel" options
-                    Snackbar snackbar = Snackbar.make(recyclerView, "Delete task?", Snackbar.LENGTH_LONG)
-                            .setAction("DELETE", v -> {
-                                // Delete the task permanently when "DELETE" is clicked
-                                taskAdapter.deleteTask(position);
-                                Toast.makeText(StudyPlanner.this, "Task deleted", Toast.LENGTH_SHORT).show();
-                            })
-                            .setActionTextColor(Color.RED)
-                            .addCallback(new Snackbar.Callback() {
-                                @Override
-                                public void onDismissed(Snackbar snackbar, int event) {
-                                    if (event == Snackbar.Callback.DISMISS_EVENT_ACTION) {
-                                        taskList.add(position, taskToDelete);  // Restore the task
-                                    }
-                                }
+                    // Save tasks immediately after deletion
+                    saveTasks();
+
+                    Snackbar snackbar = Snackbar.make(recyclerView, "Task deleted", Snackbar.LENGTH_LONG)
+                            .setAction("CANCEL", v -> {
+                                // Restore the task
+                                taskList.add(position, taskToDelete);
+                                taskAdapter.notifyItemInserted(position);
+                                saveTasks(); // Save after restoration
                             });
 
-                    snackbar.setAction("CANCEL", v -> {
-                        taskList.add(position, taskToDelete);
-                        taskAdapter.notifyItemInserted(position);
-                        Toast.makeText(StudyPlanner.this, "Task restored", Toast.LENGTH_SHORT).show();
+                    snackbar.addCallback(new Snackbar.Callback() {
+                        @Override
+                        public void onDismissed(Snackbar snackbar, int event) {
+                            // Only handle cases where the action was NOT triggered (to avoid double restoration)
+                            if (event != Snackbar.Callback.DISMISS_EVENT_ACTION) {
+                                saveTasks();
+                            }
+                        }
                     });
 
                     snackbar.show();
@@ -113,6 +111,8 @@ public class StudyPlanner extends AppCompatActivity {
                     showTaskInputDialog(taskToEdit, position);
                 }
             }
+
+
         });
         itemTouchHelper.attachToRecyclerView(recyclerView);
     }
@@ -124,7 +124,7 @@ public class StudyPlanner extends AppCompatActivity {
         MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this)
                 .setTitle(dialogTitle)
                 .setView(dialogView)
-                .setNegativeButton("Cancel", null);
+                .setNegativeButton(".", null);
 
         AlertDialog dialog = builder.create();
 
@@ -144,6 +144,10 @@ public class StudyPlanner extends AppCompatActivity {
                 } else {
                     taskAdapter.addTask(new Task(taskName));
                 }
+
+                // Save tasks after adding or editing
+                saveTasks();
+
                 dialog.dismiss();
             } else {
                 Toast.makeText(this, "Please enter a task name", Toast.LENGTH_SHORT).show();
@@ -151,6 +155,32 @@ public class StudyPlanner extends AppCompatActivity {
         });
 
         dialog.show();
+    }
+
+    private void saveTasks() {
+        SharedPreferences prefs = getPreferences(MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+
+        // Create a list of task names
+        List<String> taskNames = new ArrayList<>();
+        for (Task task : taskList) {
+            taskNames.add(task.getName());
+        }
+
+        // Save the task list as a Set of Strings
+        editor.putStringSet("tasks", new HashSet<>(taskNames));
+        editor.apply();
+    }
+
+    private void loadTasks() {
+        SharedPreferences prefs = getPreferences(MODE_PRIVATE);
+        Set<String> savedTasks = prefs.getStringSet("tasks", new HashSet<>());
+
+        taskList.clear(); // Clear the existing task list
+        for (String taskName : savedTasks) {
+            taskList.add(new Task(taskName)); // Add each task from saved data
+        }
+        taskAdapter.notifyDataSetChanged(); // Update the RecyclerView
     }
 
     // Task Model Class

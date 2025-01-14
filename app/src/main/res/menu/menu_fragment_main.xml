@@ -4,7 +4,7 @@
 
     <item
         android:id="@+id/mFragmentMainAddPost"
-        android:title="Add_post"
+        android:title="Add"
         app:showAsAction="ifRoom" />
 
 </menu>

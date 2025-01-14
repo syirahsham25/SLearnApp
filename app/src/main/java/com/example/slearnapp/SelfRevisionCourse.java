@@ -31,7 +31,7 @@ import java.util.Set;
 public class SelfRevisionCourse extends AppCompatActivity {
     private TextView courseTitle;
     private GridLayout topicsGrid;
-    private Button addTopicButton;
+    private Button addTopicButton,button1;
     private ImageButton backButton;
     private String courseName;
     private ArrayList<String> topicsList;
@@ -48,6 +48,17 @@ public class SelfRevisionCourse extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_self_revision_course);
+
+        button1 = findViewById(R.id.btnTopic);
+
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SelfRevisionCourse.this, SelfRevisionTopic.class);
+                startActivity(intent);
+            }
+        });
+
 
         initializeViews();
         courseName = getIntent().getStringExtra("course_name");
@@ -125,6 +136,7 @@ public class SelfRevisionCourse extends AppCompatActivity {
         dialog.show();
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private void addTopicToGrid(String topicName) {
         LinearLayout topicLayout = new LinearLayout(this);
         GridLayout.LayoutParams params = new GridLayout.LayoutParams();
